@@ -1,22 +1,15 @@
-//your code here
-const priceElements = document.querySelectorAll("[data-ns-test='prices']");
-
-      // Calculate the total price
-      let totalPrice = 0;
-      for (let i = 0; i < priceElements.length; i++) {
-        totalPrice += parseInt(priceElements[i].textContent);
-      }
-
-      // Display the total price in the grand total element
-      const grandTotalElement = document.querySelector("[data-ns-test='grandTotal']");
-      grandTotalElement.textContent = totalPrice.toString();
-
-      // Create a new row for the total price
-      const newRow = document.createElement("tr");
-      const newCell1 = document.createElement("td");
-      const newCell2 = document.createElement("td");
-      newCell1.textContent = "Total";
-      newCell2.textContent = totalPrice.toString();
-      newRow.appendChild(newCell1);
-      newRow.appendChild(newCell2);
-      grandTotalElement.parentNode.parentNode.insertBefore(newRow, grandTotalElement.parentNode);
+ const priceRows = document.querySelectorAll('[data-ns-test="prices"]');
+  
+  // Initialize the total price to zero
+  let totalPrice = 0;
+  
+  // Loop through each price row and add its value to the total price
+  priceRows.forEach(row => {
+    totalPrice += parseInt(row.textContent);
+  });
+  
+  // Get the table cell element where the total price will be displayed
+  const totalCell = document.querySelector('[data-ns-test="grandTotal"]');
+  
+  // Set the text content of the total cell to the total price
+  totalCell.textContent = totalPrice;
